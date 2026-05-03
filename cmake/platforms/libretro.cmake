@@ -8,7 +8,7 @@ set(SE_AUDIO_ENGINE_VALID_OPTIONS "libretro")
 set(SE_WINDOWING "libretro")
 set(SE_AUDIO_ENGINE "libretro")
 set(SE_AUDIO_ENGINE_DEFAULT "libretro")
-set(SE_PLATFORM "retraorch")
+set(SE_PLATFORM "libretro")
 
 set(SE_CMAKERC_DEFAULT ON)
 set(SE_ALLOW_CMAKERC ON)
