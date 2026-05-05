@@ -8,6 +8,14 @@ bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
 
+bool OS::init() {
+    SYS_STDIO_Report(true);
+    return true;
+}
+
+void OS::deinit() {
+}
+
 std::string OS::getPlatform() {
     return "Wii";
 }

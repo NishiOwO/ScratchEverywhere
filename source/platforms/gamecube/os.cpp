@@ -1,3 +1,5 @@
+#include <ogc/consol.h>
+#include <ogc/exi.h>
 #include <os.hpp>
 
 namespace OS {
@@ -5,6 +7,17 @@ bool toExit = false;
 bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
+
+bool OS::init() {
+    if ((SYS_GetConsoleType() & SYS_CONSOLE_MASK) == SYS_CONSOLE_DEVELOPMENT) {
+        CON_EnableBarnacle(EXI_CHANNEL_0, EXI_DEVICE_1);
+    }
+    CON_EnableGecko(EXI_CHANNEL_1, true);
+    return true;
+}
+
+void OS::deinit() {
+}
 
 std::string OS::getPlatform() {
     return "GameCube";

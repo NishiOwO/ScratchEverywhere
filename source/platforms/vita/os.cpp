@@ -1,12 +1,26 @@
+#include <log.hpp>
 #include <os.hpp>
 #include <psp2/apputil.h>
+#include <psp2/io/fcntl.h>
+#include <psp2/net/http.h>
+#include <psp2/net/net.h>
+#include <psp2/net/netctl.h>
+#include <psp2/sysmodule.h>
 #include <psp2/system_param.h>
+#include <psp2/touch.h>
 
 namespace OS {
 bool toExit = false;
 bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
+
+bool OS::init() {
+    return true;
+}
+
+void OS::deinit() {
+}
 
 std::string OS::getPlatform() {
     return "Vita";
@@ -39,10 +53,24 @@ bool OS::isOnline() {
 }
 
 bool OS::initWifi() {
+    Log::log("[Vita] Loading module SCE_SYSMODULE_NET");
+    sceSysmoduleLoadModule(SCE_SYSMODULE_NET);
+
+    Log::log("[Vita] Running sceNetInit");
+    SceNetInitParam netInitParam;
+    int size = 1 * 1024 * 1024; // net buffer size ([size in MB]*1024*1024)
+    netInitParam.memory = malloc(size);
+    netInitParam.size = size;
+    netInitParam.flags = 0;
+    sceNetInit(&netInitParam);
+
+    Log::log("[Vita] Running sceNetCtlInit");
+    sceNetCtlInit();
     return true;
 }
 
 void OS::deInitWifi() {
+    // TODO: implement
 }
 
 std::string OS::getUsername() {

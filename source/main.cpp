@@ -31,11 +31,15 @@
 
 static void exitApp() {
     Render::deInit();
+    OS::deinit();
 }
 
 static bool initApp() {
     Log::deleteLogFile();
     Render::debugMode = true;
+    if (!OS::init()) {
+        return false;
+    }
     if (!Render::Init()) {
         return false;
     }

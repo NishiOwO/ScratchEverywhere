@@ -11,6 +11,15 @@ bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
 
+bool OS::init() {
+    romfsInit();
+    return true;
+}
+
+void OS::deinit() {
+    romfsExit();
+}
+
 std::string OS::getPlatform() {
     return "3DS";
 }

@@ -1,9 +1,11 @@
+#include <log.hpp>
 #include <os.hpp>
 
 #ifdef _WIN32
 #include <direct.h>
 #include <io.h>
 #include <lmcons.h>
+#include <shlobj.h>
 #include <shlwapi.h>
 #include <windows.h>
 #else
@@ -18,6 +20,13 @@ bool toExit = false;
 bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
+
+bool OS::init() {
+    return true;
+}
+
+void OS::deinit() {
+}
 
 std::string OS::getPlatform() {
     return "PC";

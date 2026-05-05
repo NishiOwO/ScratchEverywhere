@@ -9,6 +9,16 @@ extern bool loadedSettings;
 extern std::string *customProjectsPath;
 
 /**
+ * Initialize platform specific stuffs
+ */
+bool init();
+
+/**
+ * Deinit platform specific stuffs
+ */
+void deinit();
+
+/**
  * @return `true` if the platform is a "pro" version of the platform, e.g: New 3DS, DSi
  */
 bool isEnhancedPlatform();

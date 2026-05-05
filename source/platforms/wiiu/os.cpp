@@ -1,5 +1,7 @@
+#include <coreinit/debug.h>
 #include <nn/act.h>
 #include <os.hpp>
+#include <whb/log_udp.h>
 #include <whb/sdcard.h>
 
 namespace OS {
@@ -7,6 +9,22 @@ bool toExit = false;
 bool loadedSettings = false;
 std::string *customProjectsPath = nullptr;
 } // namespace OS
+
+bool OS::init() {
+    WHBLogUdpInit();
+
+    if (!WHBMountSdCard()) {
+        OSFatal("Failed to mount sd card.");
+        return false;
+    }
+    nn::act::Initialize();
+    return true;
+}
+
+void OS::deinit() {
+    WHBUnmountSdCard();
+    nn::act::Finalize();
+}
 
 std::string OS::getPlatform() {
     return "Wii U";
