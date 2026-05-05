@@ -1,6 +1,9 @@
 #include <filesystem.hpp>
 #include <os.hpp>
 
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #if defined(_WIN32)
 #include <direct.h>
 #include <io.h>
@@ -14,8 +17,6 @@
 #else
 #include <dirent.h>
 #include <pwd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <unistd.h>
 #endif
 
