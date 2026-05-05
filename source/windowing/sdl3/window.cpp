@@ -1,5 +1,6 @@
 #include "window.hpp"
 #include <input.hpp>
+#include <log.hpp>
 #include <math.hpp>
 #include <render.hpp>
 #ifdef RENDERER_OPENGL

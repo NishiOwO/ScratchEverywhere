@@ -3,6 +3,7 @@
 #include <audio.hpp>
 #include <downloader.hpp>
 #include <input.hpp>
+#include <log.hpp>
 #include <render.hpp>
 #include <runtime.hpp>
 #include <text.hpp>

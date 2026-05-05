@@ -1,6 +1,7 @@
 #include "window.hpp"
 #include <chrono>
 #include <input.hpp>
+#include <log.hpp>
 #include <math.hpp>
 #include <render.hpp>
 #include <thread>
