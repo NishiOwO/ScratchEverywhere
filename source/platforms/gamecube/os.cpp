@@ -1,5 +1,7 @@
+#include <fat.h>
 #include <ogc/consol.h>
 #include <ogc/exi.h>
+#include <ogc/system.h>
 #include <os.hpp>
 
 namespace OS {
